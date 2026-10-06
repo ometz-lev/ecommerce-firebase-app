@@ -1,8 +1,10 @@
+//This component renders a button that allows users to add a product to their shopping cart.
+//If the product is already in the cart, it displays a quantity selector with "+" and "−" buttons to increase or decrease the quantity.
 import { Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import type { RootState } from '../store';
 import { addToCart, removeOneFromCart } from '../store/cartSlice';
-import type { Product } from '../types/products';
+import type { Product } from '../types/Product';
 
 type AddToCartButtonProps = {
   product: Product;
@@ -18,6 +20,7 @@ const AddToCartButton = ({ product, onMessage, className = '' }: AddToCartButton
   const quantity = items.find((item) => item.id === product.id)?.count ?? 0;
   const expanded = quantity > 0;
 
+  // Handler for adding the product to the cart
   const handleAdd = () => {
     dispatch(addToCart(product));
     if (onMessage) {
@@ -25,10 +28,12 @@ const AddToCartButton = ({ product, onMessage, className = '' }: AddToCartButton
     }
   };
 
+  // Handler for decreasing the quantity of the product in the cart
   const handleDecrease = () => {
     dispatch(removeOneFromCart(product.id));
   };
 
+  // Handler for increasing the quantity of the product in the cart
   const handleIncrease = () => {
     dispatch(addToCart(product));
     if (onMessage) {

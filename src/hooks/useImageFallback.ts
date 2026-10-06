@@ -4,13 +4,13 @@
 import { useState } from 'react';
 
 export const useImageFallback = () => {
-  const [failedImages, setFailedImages] = useState<Set<number>>(new Set());
+  const [failedImages, setFailedImages] = useState<Set<string>>(new Set());
 
-  const handleImageError = (id: number) => {
+  const handleImageError = (id: string) => {
     setFailedImages((prev) => new Set(prev).add(id));
   };
 
-  const hasFailed = (id: number) => failedImages.has(id);
+  const hasFailed = (id: string) => failedImages.has(id);
 
   return { handleImageError, hasFailed };
 };

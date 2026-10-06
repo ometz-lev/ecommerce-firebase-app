@@ -1,18 +1,12 @@
-// Define the product type based on the FakeStoreAPI response structure
+// This component defines the structure of a product throughout the app
 
 export interface Product {
-    id: number;
+    id: string;
     title: string;
     price: number;
     description: string;
     category: string;
     image: string;
-    rating: Rating;
-}
-
-export interface Rating{
-    rate: number;
-    count: number;
 }
 
 export interface CartItem extends Product {

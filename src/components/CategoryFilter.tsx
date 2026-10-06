@@ -1,64 +1,60 @@
-import { useEffect, useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { Button, ButtonGroup, Spinner } from 'react-bootstrap';
-import axios from 'axios';
+//This component provides a dropdown menu for filtering products by category. It receives the list of categories, the currently active category, and callback functions for handling category changes and clearing the filter.
+import { Button, Form } from 'react-bootstrap';
 
-const fetchCategories = async (): Promise<string[]> => {
-  try {
-    const { data } = await axios.get<string[]>('https://fakestoreapi.com/products/categories');
-    return ['all', ...data];
-  } catch (err) {
-    console.error('Failed to fetch categories:', err);
-    return ['all'];
-  }
-};
+interface CategoryFilterProps {
+  categories: string[];
+  activeCategory: string;
+  onChange: (category: string) => void;
+  onClear: () => void;
+}
 
-const CategoryFilter: React.FC = () => {
-  const [categories, setCategories] = useState<string[]>([]);
-  const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  // Fetch categories on component mount
-  //Falls to "All" if the API call fails
-  useEffect(() => {
-    const loadCategories = async () => {
-      const cats = await fetchCategories();
-      setCategories(cats);
-      setLoading(false);
-    };
-    loadCategories();
-  }, []);
-
-  const params = new URLSearchParams(location.search);
-  const currentCategory = params.get('category') || 'all';
-
-  const handleCategoryChange = (category: string) => {
-    if (category === 'all') {
-      navigate('/products');
-    } else {
-      navigate(`/products?category=${encodeURIComponent(category)}`);
-    }
-  };
-
+const CategoryFilter: React.FC<CategoryFilterProps> = ({
+  categories,
+  activeCategory,
+  onChange,
+  onClear,
+}) => {
   return (
-    <div className="mb-4 d-flex flex-wrap gap-2 justify-content-center">
-      <h6 className="w-100 text-center fw-bold mb-3">Filter by Category</h6>
-      {loading ? (
-        <Spinner animation="border" size="sm" />
-      ) : (
-        <ButtonGroup role="group">
-          {categories.map((category) => (
-            <Button
-              key={category}
-              variant={currentCategory === category ? 'primary' : 'outline-primary'}
-              onClick={() => handleCategoryChange(category)}
-              className="text-capitalize"
-            >
-              {category}
-            </Button>
-          ))}
-        </ButtonGroup>
+    <div
+      className="d-flex align-items-center gap-2 mb-4"
+      style={{ minHeight: '38px' }}
+    >
+      <Form.Select
+        aria-label="Filter by category"
+        value={activeCategory}
+        onChange={(event) => onChange(event.target.value)}
+        style={{
+          maxWidth: '220px',
+          height: '38px',
+          minHeight: '38px',
+          paddingTop: '0.375rem',
+          paddingBottom: '0.375rem',
+        }}
+      >
+        {categories.map((category) => (
+          <option key={category} value={category} className="text-capitalize">
+            {category === 'all' ? 'All Categories' : category}
+          </option>
+        ))}
+      </Form.Select>
+
+      {activeCategory !== 'all' && (
+        <Button
+          variant="outline-secondary"
+          size="sm"
+          onClick={onClear}
+          style={{
+            color: '#000000',
+            borderColor: '#6c757d',
+            height: '38px',
+            minHeight: '38px',
+            display: 'inline-flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          Clear Filter
+        </Button>
       )}
     </div>
   );
