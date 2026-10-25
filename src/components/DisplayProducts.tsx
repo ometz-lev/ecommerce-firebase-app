@@ -1,6 +1,6 @@
 //This component allows the user to fetch and view all products from the Firestore database
 
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { db } from '../firebaseConfig';
 import { collection, getDocs } from 'firebase/firestore';
 
