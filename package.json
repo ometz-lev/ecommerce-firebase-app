@@ -2,13 +2,12 @@
   "name": "ecommerce-web-app",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "test": "jest --watch"
+    "test": "jest --runInBand --watchAll=false"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.12.0",
