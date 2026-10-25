@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Logout component logs the user out and navigates to login 1`] = `
+<div>
+  <div>
+    <p>
+      Logging out...
+    </p>
+  </div>
+</div>
+`;

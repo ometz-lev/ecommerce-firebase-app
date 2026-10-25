@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Login component accepts user input and submits the login form 1`] = `
+<div>
+  <div
+    style="min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px; background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%);"
+  >
+    <div
+      style="width: 100%; max-width: 420px; background: rgb(255, 255, 255); border: 1px solid rgb(229, 231, 235); border-radius: 16px; box-shadow: 0 18px 45px rgba(15, 23, 42, 0.12); padding: 32px 28px;"
+    >
+      <h2
+        style="text-align: center; margin-bottom: 24px; font-size: 2rem; font-weight: 700; color: rgb(17, 24, 39);"
+      >
+        Login
+      </h2>
+      <form
+        style="display: flex; flex-direction: column; gap: 16px;"
+      >
+        <input
+          autocomplete="email"
+          placeholder="Email"
+          required=""
+          style="width: 100%; border: 1px solid rgb(223, 231, 245); border-radius: 12px; padding: 14px 16px; font-size: 1rem; background: rgb(248, 250, 252); transition: border-color 0.2s ease, box-shadow 0.2s ease; outline: none; box-sizing: border-box; color: rgb(15, 23, 42);"
+          type="email"
+          value=""
+        />
+        <input
+          autocomplete="current-password"
+          placeholder="Password"
+          required=""
+          style="width: 100%; border: 1px solid rgb(223, 231, 245); border-radius: 12px; padding: 14px 16px; font-size: 1rem; background: rgb(248, 250, 252); transition: border-color 0.2s ease, box-shadow 0.2s ease; outline: none; box-sizing: border-box; color: rgb(15, 23, 42);"
+          type="password"
+          value=""
+        />
+        <button
+          style="width: 100%; padding: 14px 16px; border-radius: 12px; background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); color: rgb(255, 255, 255); font-size: 1rem; font-weight: 700; letter-spacing: 0.02em; cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease; box-shadow: 0 12px 25px rgba(37, 99, 235, 0.22);"
+          type="submit"
+        >
+          Login
+        </button>
+      </form>
+      <p
+        style="text-align: center; color: rgb(75, 85, 99); font-size: 0.95rem; margin-top: 12px;"
+      >
+        Don't have an account?
+         
+        <a
+          href="/register"
+        >
+          Register here
+        </a>
+      </p>
+    </div>
+  </div>
+</div>
+`;

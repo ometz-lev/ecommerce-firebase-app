@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Cart integration updates the cart when a product is added 1`] = `
+<div>
+  <button
+    class="rounded-pill  btn btn-primary"
+    style="min-width: 96px; width: fit-content; white-space: nowrap; padding: 0.5rem 0.9rem; font-size: 0.9rem; font-weight: 600;"
+    type="button"
+  >
+    + Add
+  </button>
+</div>
+`;
+
+exports[`Cart integration updates the cart when a product is added 2`] = `
+<div>
+  <div
+    class="d-inline-flex align-items-center border rounded-pill overflow-hidden shadow-sm bg-light "
+    style="min-width: 104px; width: fit-content; height: 38px;"
+  >
+    <button
+      class="rounded-0 border-0 px-2 py-1 btn btn-outline-secondary btn-sm"
+      style="min-width: 32px; height: 100%; font-size: 1.1rem; line-height: 1;"
+      type="button"
+    >
+      −
+    </button>
+    <span
+      class="flex-grow-1 text-center px-2 fw-semibold"
+      style="font-size: 0.95rem;"
+    >
+      1
+    </span>
+    <button
+      class="rounded-0 border-0 px-2 py-1 btn btn-outline-secondary btn-sm"
+      style="min-width: 32px; height: 100%; font-size: 1.1rem; line-height: 1;"
+      type="button"
+    >
+      +
+    </button>
+  </div>
+</div>
+`;

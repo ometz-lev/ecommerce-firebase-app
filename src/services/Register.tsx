@@ -68,17 +68,21 @@ const Register: React.FC = () => {
       navigate('/login');
       
     } catch (err: unknown) {
+      const firebaseErrorMessage = err instanceof Error ? err.message : 'Registration failed. Please try again.';
+
       if (accountCreated && auth.currentUser) {
         // If the account was created but an error occurred afterward, delete the user to avoid 
         // orphaned accounts
         try {
           await deleteUser(auth.currentUser);
         } catch {
-          console.error('Error deleting user:', err);
+          console.error('Error deleting user after failed registration:', err);
         }
-      } else {
-        setError('Registration failed. Please try again.');
       }
+
+      setError(firebaseErrorMessage);
+    } finally {
+      setLoading(false);
     }
   };
 
